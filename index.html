@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: template
 title: 我的Blog
 ---
 <h2>{{ page.title }}</h2>
@@ -9,3 +9,4 @@ title: 我的Blog
 <li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
 </ul>
+<!--[if !IE]><script>fixScale(document);</script><![endif]-->
