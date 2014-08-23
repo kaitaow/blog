@@ -1,38 +1,20 @@
 ---
 layout: template
-title: 我的Blog
+title:Kaitaow's Blog
 ---
-<!-- Static navbar -->
-<div class="navbar navbar-default" role="navigation">
-<div class="navbar-header">
-  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	<span class="sr-only">Toggle navigation</span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-	<span class="icon-bar"></span>
-  </button>
-  <a class="navbar-brand" href="#">Kaitaow's Blog</a>
-</div>
-<div class="navbar-collapse collapse">
-  <ul class="nav navbar-nav">
-	<li class="active"><a href="#">Home</a></li>
-	<li><a href="#">Projects</a></li>
-	<li class="dropdown">
-	  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Articles<b class="caret"></b></a>
-	  <ul class="dropdown-menu">
-		<li><a href="#">Development</a></li>
-		<li><a href="#">Algorithm</a></li>
-		<li><a href="#">Other</a></li>
-	  </ul>
-	</li>
-  </ul>
-</div><!--/.nav-collapse -->
-</div>
 <h2>{{ page.title }}</h2>
-<p>最新文章</p>
-<ul>
+<p>Latest Articles</p>
+<!--<ul>
 {% for post in site.posts %}
 <li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
-</ul>
+</ul>-->
+<table class="table">
+<thead><th>Date</th><th>Title</th></thead>
+<tbody>
+{% for post in site.posts %}
+<tr><td>{{ post.date | date_to_string }}</td><td><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></td></tr>
+{% endfor %}
+</tbody>
+</table>
 <!--[if !IE]><script>fixScale(document);</script><![endif]-->
