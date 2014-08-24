@@ -1,0 +1,76 @@
+---
+layout: template
+title: How to use keyword as table name in SQL Server
+---
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 24px;">问题1</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif;"><span style="font-family: 微软雅黑, sans-serif; font-size: 20px;">问题描述</span><br/></span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif;">在数据库中创建名为user的table时会报错，因为SQL Server将user当成了关键字而非表名。</span><br/>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif;"></span>
+</p>
+<table cellspacing="0" cellpadding="0" width="578">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top; word-break: break-all;" width="556">
+                <p>
+                    <span style="color:#0000ff;">create</span>&nbsp;<span style="color:#8000ff;">table</span>&nbsp;<span style="color:#0000ff;">user</span><br/>(<br/>&nbsp;&nbsp;&nbsp;&nbsp;userId&nbsp;<span style="color:#8000ff;">int</span>,<br/>&nbsp;&nbsp;&nbsp;&nbsp;username&nbsp;<span style="color:#8000ff;">varchar</span>(<span style="color:#ff0000;">10</span>),<br/>&nbsp;&nbsp;&nbsp;&nbsp;password&nbsp;<span style="color:#8000ff;">varchar</span>(<span style="color:#ff0000;">10</span>),<br/>&nbsp;&nbsp;&nbsp;&nbsp;email&nbsp;<span style="color:#8000ff;">varchar</span>(<span style="color:#ff0000;">25</span>),<br/>&nbsp;&nbsp;&nbsp;&nbsp;phone&nbsp;<span style="color:#8000ff;">varchar</span>(<span style="color:#ff0000;">11</span>),<br/>&nbsp;&nbsp;&nbsp;&nbsp;address&nbsp;<span style="color:#8000ff;">varchar</span>(<span style="color:#ff0000;">50</span>),<br/>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">primary</span>&nbsp;<span style="color:#0000ff;">key</span>(userId)<br/>);
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-size: 20px;">解决方法</span>
+</p>
+<p>
+    将user替换为[user]，这样SQL Server就不会将user认为是关键字了。
+</p>
+<p>
+    类似的关键字有order。
+</p>
+<p>
+    <span style="font-size: 24px;">问题2</span><br/>
+</p>
+<p>
+    <span style="font-size: 20px;">问题描述</span>
+</p>
+<p>
+    在使用Hibernate的过程中,执行如下语句
+</p>
+<p>
+    String sql=&quot;from User u where u.username=? and u.password=?&quot;;
+</p>
+<p>
+    会报错，因为Hibernate在将上述语句转化为SQL语句过程中并不会帮你将user替换为[user]
+</p>
+<p>
+    <span style="font-size: 20px;">解决方法</span>
+</p>
+<p>
+    打开User.hbm.xml
+</p>
+<p>
+    定位到如下语句
+</p>
+<table cellspacing="0" cellpadding="0" width="612">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="590">
+                <p>
+                    <span style="color:#0000ff;">&lt;hibernate-mapping&gt;</span><br/>&nbsp;&nbsp;<span style="color:#0000ff;">&lt;class&nbsp;name</span>=<span style="color:#800000;">&quot;vo.User&quot;</span><span style="color:#0000ff;">&nbsp;table</span>=<span style="color:#800000;">&quot;user&quot;</span><span style="color:#0000ff;">&nbsp;schema</span>=<span style="color:#800000;">&quot;dbo&quot;</span><span style="color:#0000ff;">&nbsp;catalog</span>=<span style="color:#800000;">&quot;ofos&quot;</span><span style="color:#0000ff;">&gt;</span>...<span style="color:#0000ff;">&lt;/class&gt;</span><br/><span style="color:#0000ff;">&lt;/hibernate-mapping&gt;</span><br/>
+
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    将&#39;user&#39;替换为&#39;[user]&#39;即可。
+</p>
