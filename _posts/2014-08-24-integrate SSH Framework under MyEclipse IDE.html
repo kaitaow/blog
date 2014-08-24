@@ -1,0 +1,508 @@
+---
+layout: template
+title: Integrate SSH Framework under MyEclipse IDE
+---
+<h2>{{ page.title }}</h2>
+<p>
+    <span style="font-size: 24px;">1 Create a new project</span>
+</p>
+<table width="887">
+    <tbody>
+        <tr>
+            <td width="866" valign="top">
+                <img title="麦库截图20141724175310803.jpg" alt="麦库截图20141724175310803.jpg" src="http://files.note.sdo.com/Z1AG4E26D945BE4E026AAA49B6E84E5F740CB5B1" border="0"/><br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-size: 24px;">2 Add&nbsp;</span><span style="font-family: 微软雅黑, sans-serif; font-size: 24px;">Struts2 capability</span>
+</p>
+<p>
+    <span style="font-size: 20px;">2.1 copy necessary&nbsp;</span><span style="font-family: 微软雅黑, sans-serif; font-size: 20px;">jars into WEB-INF/lib</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif;"></span>
+</p>
+<table width="887">
+    <tbody>
+        <tr>
+            <td width="866" valign="top">
+                <img title="麦库截图20141724175642062.jpg" alt="麦库截图20141724175642062.jpg" src="http://files.note.sdo.com/Z1AG047B84D529F1F5815048A1DA1145C5AB7AFB" border="0"/>&nbsp;<br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <font face="微软雅黑, sans-serif"><span style="font-size: 20px;">2.2 add struts.xml in source folder</span></font>
+</p>
+<p>
+    <font face="微软雅黑, sans-serif"><span style="font-size: 20px;"></span></font>
+</p>
+<table cellspacing="0" cellpadding="0" width="880">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="858">
+                <p>
+                    &lt;?xml&nbsp;version=<span style="color:#800000;">&quot;1.0&quot;</span>&nbsp;encoding=<span style="color:#800000;">&quot;utf-8&quot;</span>?&gt;<br/>
+&lt;!DOCTYPE&nbsp;struts&nbsp;PUBLIC&nbsp;<span style="color:#800000;">&quot;-//Apache&nbsp;Software&nbsp;Foundation//DTD&nbsp;Struts&nbsp;Configuration&nbsp;2.0//EN&quot;</span><br/>
+<span style="color:#800000;">&quot;http://struts.apache.org/dt&nbsp;ds/struts-2.0.dtd&quot;</span>&gt;<br/>
+&lt;struts&gt;<br/>
+&nbsp;&nbsp;&lt;<span style="color:#0000ff;">package</span>&nbsp;name=<span style="color:#800000;">&quot;struts2&quot;</span>&nbsp;<span style="color:#0000ff;">extends</span>=<span style="color:#800000;">&quot;struts-default&quot;</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;action&nbsp;name=<span style="color:#800000;">&quot;login&quot;</span>&nbsp;<span style="color:#0000ff;">class</span>=<span style="color:#800000;">&quot;action.UserAction&quot;</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&nbsp;name=<span style="color:#800000;">&quot;success&quot;</span>&gt;/welcome.jsp&lt;/result&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&nbsp;name=<span style="color:#800000;">&quot;failure&quot;</span>&gt;/error.jsp&lt;/result&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/action&gt;<br/>
+&nbsp;&nbsp;&lt;/<span style="color:#0000ff;">package</span>&gt;<br/>
+&lt;/struts&gt;
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <font face="微软雅黑, sans-serif"><span style="font-size: 20px;">2.3&nbsp;modify&nbsp;WEB-INF/web.xml</span></font>
+</p>
+<p>
+    <font face="微软雅黑, sans-serif"><span style="font-size: 20px;"></span></font>
+</p>
+<p>
+    <br/>
+    <table cellspacing="0" cellpadding="0" width="889" style="font-family: 微软雅黑, sans-serif;">
+        <tbody>
+            <tr>
+                <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="867">
+                    <p>
+                        <span style="color:#0000ff;">&lt;?xml&nbsp;version</span>=<span style="color:#800000;">&quot;1.0&quot;</span><span style="color:#0000ff;">&nbsp;encoding</span>=<span style="color:#800000;">&quot;utf-8&quot;</span><span style="color:#0000ff;">?&gt;</span><br/><span style="color:#0000ff;">&lt;web-app&nbsp;version</span>=<span style="color:#800000;">&quot;3.0&quot;</span><span style="color:#0000ff;">&nbsp;xmlns</span>=<span style="color:#800000;">&quot;http://java.sun.com/xml/ns/javaee&quot;</span><span style="color:#0000ff;">&nbsp;xmlns:xsi</span>=<span style="color:#800000;">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span style="color:#0000ff;">&nbsp;xsi:schemaLocation</span>=<span style="color:#800000;">&quot;http://java.sun.com/xml/ns/javaee&nbsp;http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;</span><span style="color:#0000ff;">&gt;</span><br/>
+&nbsp;&nbsp;<span style="color:#0000ff;">&lt;display-name&gt;&lt;/display-name&gt;</span><br/>
+&nbsp;&nbsp;<span style="color:#0000ff;">&lt;filter&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#008000;">&lt;!--定义核心Filter的名字&nbsp;--&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;filter-name&gt;</span>struts2<span style="color:#0000ff;">&lt;/filter-name&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#008000;">&lt;!--定义核心Filter的实现类&nbsp;--&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;filter-class&gt;</span>org.apache.struts2.dispatcher.FilterDispatcher<span style="color:#0000ff;">&lt;/filter-class&gt;</span><br/>
+&nbsp;&nbsp;<span style="color:#0000ff;">&lt;/filter&gt;</span><br/>
+&nbsp;&nbsp;<span style="color:#008000;">&lt;!--FilterDispatcher用来初始化Struts2并且处理所有的Web请求&nbsp;--&gt;</span><br/>
+&nbsp;&nbsp;<span style="color:#0000ff;">&lt;filter-mapping&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;filter-name&gt;</span>struts2<span style="color:#0000ff;">&lt;/filter-name&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;url-pattern&gt;/</span>*<span style="color:#0000ff;">&lt;/url-pattern&gt;</span><br/>
+&nbsp;&nbsp;<span style="color:#0000ff;">&lt;/filter-mapping&gt;</span><br/>
+&nbsp;&nbsp;<span style="color:#0000ff;">&lt;welcome-file-list&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;welcome-file&gt;</span>index.jsp<span style="color:#0000ff;">&lt;/welcome-file&gt;</span><br/>
+&nbsp;&nbsp;<span style="color:#0000ff;">&lt;/welcome-file-list&gt;</span><br/><span style="color:#0000ff;">&lt;/web-app&gt;</span>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</p>
+<p>
+    <span style="font-size: 20px;">2.4 create new source package named &quot;action&quot;,under the package, create a class named &quot;UserAction&quot;</span><br/>
+</p>
+<p>
+    <span style="font-size: 20px;"></span>
+</p>
+<table cellspacing="0" cellpadding="0" width="887">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="865">
+                <p>
+                    <span style="color:#0000ff;">package</span>&nbsp;action;<br/>
+<br/>
+<span style="color:#0000ff;">public</span>&nbsp;<span style="color:#0000ff;">class</span>&nbsp;UserAction<br/>
+{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">private</span>&nbsp;<span style="color:#8000ff;">String</span>&nbsp;username;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">private</span>&nbsp;<span style="color:#8000ff;">String</span>&nbsp;password;<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">public</span>&nbsp;<span style="color:#8000ff;">String</span>&nbsp;execute()&nbsp;<span style="color:#0000ff;">throws</span>&nbsp;Exception<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">if</span>&nbsp;(getUsername().equals(<span style="color:#800000;">&quot;aaa&quot;</span>)&nbsp;&amp;&amp;&nbsp;getPassword().equals(<span style="color:#800000;">&quot;123&quot;</span>))<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span style="color:#800000;">&quot;this&nbsp;is&nbsp;ok&quot;</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">return</span>&nbsp;<span style="color:#800000;">&quot;success&quot;</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">else</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System.out.println(<span style="color:#800000;">&quot;this&nbsp;is&nbsp;not&nbsp;success&quot;</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">return</span>&nbsp;<span style="color:#800000;">&quot;error&quot;</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">public</span>&nbsp;<span style="color:#8000ff;">String</span>&nbsp;getPassword()<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">return</span>&nbsp;password;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">public</span>&nbsp;<span style="color:#8000ff;">void</span>&nbsp;setPassword(<span style="color:#8000ff;">String</span>&nbsp;password)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">this</span>.password&nbsp;=&nbsp;password;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">public</span>&nbsp;<span style="color:#8000ff;">String</span>&nbsp;getUsername()<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">return</span>&nbsp;username;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">public</span>&nbsp;<span style="color:#8000ff;">void</span>&nbsp;setUsername(<span style="color:#8000ff;">String</span>&nbsp;username)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">this</span>.username&nbsp;=&nbsp;username;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-size: 20px;"></span><span style="font-size: 20px; font-family: 微软雅黑, sans-serif;">2.5 create JSP files under WebRoot</span>
+</p>
+<p>
+    index.jsp
+</p>
+<table cellspacing="0" cellpadding="0" width="890">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="868">
+                <p>
+                    <span style="color:#0000ff;">&lt;</span>%@&nbsp;page&nbsp;<span style="color:#0000ff;">language</span>=<span style="color:#800000;">&quot;java&quot;</span>&nbsp;import=<span style="color:#800000;">&quot;java.util.*&quot;</span>&nbsp;pageEncoding=<span style="color:#800000;">&quot;gbk&quot;</span>%<span style="color:#0000ff;">&gt;</span><br/>
+<span style="color:#0000ff;">&lt;!DOCTYPE</span>&nbsp;<span style="color:#0000ff;">HTML</span>&nbsp;<span style="color:#0000ff;">PUBLIC</span>&nbsp;<span style="color:#800000;">&quot;-//W3C//DTD&nbsp;HTML&nbsp;4.01&nbsp;Transitional//EN&quot;</span><span style="color:#0000ff;">&gt;</span><br/>
+<span style="color:#0000ff;">&lt;html&gt;</span><br/>
+<span style="color:#0000ff;">&lt;head&gt;</span><br/>
+<span style="color:#0000ff;">&lt;/head&gt;</span><br/>
+<span style="color:#0000ff;">&lt;body&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;form</span>&nbsp;<span style="color:#0000ff;">action</span>=<span style="color:#800000;">&quot;login.action&quot;</span>&nbsp;<span style="color:#0000ff;">method</span>=<span style="color:#800000;">&quot;post&quot;</span><span style="color:#0000ff;">&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;form</span>&nbsp;<span style="color:#0000ff;">action</span>=<span style="color:#800000;">&quot;login.action&quot;</span>&nbsp;<span style="color:#0000ff;">method</span>=<span style="color:#800000;">&quot;post&quot;</span><span style="color:#0000ff;">&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;user&nbsp;login<span style="color:#0000ff;">&lt;br&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;username:<span style="color:#0000ff;">&lt;input</span>&nbsp;<span style="color:#0000ff;">type</span>=<span style="color:#800000;">&quot;text&quot;</span>&nbsp;<span style="color:#0000ff;">name</span>=<span style="color:#800000;">&quot;username&quot;</span>&nbsp;<span style="color:#0000ff;">/&gt;&lt;br&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;password:<span style="color:#0000ff;">&lt;input</span>&nbsp;<span style="color:#0000ff;">type</span>=<span style="color:#800000;">&quot;text&quot;</span>&nbsp;<span style="color:#0000ff;">name</span>=<span style="color:#800000;">&quot;password&quot;</span>&nbsp;<span style="color:#0000ff;">/&gt;&lt;br&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;input</span>&nbsp;<span style="color:#0000ff;">type</span>=<span style="color:#800000;">&quot;submit&quot;</span>&nbsp;<span style="color:#0000ff;">value</span>=<span style="color:#800000;">&quot;login&quot;</span>&nbsp;<span style="color:#0000ff;">/&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;/form&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;/form&gt;</span><br/>
+<span style="color:#0000ff;">&lt;/body&gt;</span><br/>
+<span style="color:#0000ff;">&lt;/html&gt;</span><br/>
+
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    error.jsp
+</p>
+<table cellspacing="0" cellpadding="0" width="894">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="872">
+                <p>
+                    <span style="color:#0000ff;">&lt;</span>%@&nbsp;page&nbsp;<span style="color:#0000ff;">language</span>=<span style="color:#800000;">&quot;java&quot;</span>&nbsp;pageEncoding=<span style="color:#800000;">&quot;gb2312&quot;</span>%<span style="color:#0000ff;">&gt;</span><br/>
+<span style="color:#0000ff;">&lt;html&gt;</span><br/>
+<span style="color:#0000ff;">&lt;head&gt;&lt;title&gt;</span>失败页面<span style="color:#0000ff;">&lt;/title&gt;&lt;/head&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;body&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;登录失败!<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;/body&gt;</span><br/>
+<span style="color:#0000ff;">&lt;/html&gt;</span>
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    welcome.jsp
+</p>
+<table cellspacing="0" cellpadding="0" width="891">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="869">
+                <p>
+                    <span style="color:#0000ff;">&lt;</span>%@&nbsp;page&nbsp;<span style="color:#0000ff;">language</span>=<span style="color:#800000;">&quot;java&quot;</span>&nbsp;pageEncoding=<span style="color:#800000;">&quot;gb2312&quot;</span>%<span style="color:#0000ff;">&gt;</span><br/>
+<span style="color:#0000ff;">&lt;</span>%@&nbsp;taglib&nbsp;prefix=<span style="color:#800000;">&quot;s&quot;</span>&nbsp;uri=<span style="color:#800000;">&quot;/struts-tags&quot;</span>%<span style="color:#0000ff;">&gt;</span><br/>
+<span style="color:#0000ff;">&lt;html&gt;</span><br/>
+<span style="color:#0000ff;">&lt;head&gt;&lt;title&gt;</span>成功页面<span style="color:#0000ff;">&lt;/title&gt;&lt;/head&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;body&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;s</span>:property&nbsp;<span style="color:#0000ff;">value</span>=<span style="color:#800000;">&quot;username&quot;</span>&nbsp;<span style="color:#0000ff;">/&gt;</span>已经成功登录!<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#0000ff;">&lt;/body&gt;</span><br/>
+<span style="color:#0000ff;">&lt;/html&gt;</span>
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 24px;">3 Add Spring capability</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 24px;"><span style="font-family: 微软雅黑, sans-serif; font-size: 20px;">3.1 right click on the project name,then select MyEclipse-&gt;Add Spring Capabilities</span><br/></span>
+</p>
+<p>
+    <font face="微软雅黑, sans-serif"><span style="font-size: 14px;">choose Spring 3.0 AOP Libraries,Spring 3.0 Core Libraries,Spring 3.0 Persistence Core Libraries,Spring 3.0 Persistence JDBC Libraries,Spring 3.0 Web Libraries,then click Next</span></font>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 24px;"><span style="font-family: 微软雅黑, sans-serif; font-size: 20px;"></span></span>
+</p>
+<table width="887">
+    <tbody>
+        <tr>
+            <td width="866" valign="top">
+                <img title="麦库截图20142024201346581.jpg" alt="麦库截图20142024201346581.jpg" src="http://files.note.sdo.com/Z1AGD5F50A7180318473C74EBFEC31AF61E2162A" border="0"/>&nbsp;<br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 24px;"><span style="font-family: 微软雅黑, sans-serif; font-size: 20px;"></span></span><span style="font-size: 20px;">3.2 create applicationContext.xml,place it under source folder,then click Next</span><br/>
+</p>
+<table width="887">
+    <tbody>
+        <tr>
+            <td width="866" valign="top">
+                <img title="麦库截图20142024201710835.jpg" alt="麦库截图20142024201710835.jpg" src="http://files.note.sdo.com/Z1AG9E58A79BF0EA3CEBD64F8060252B9A9D8261" border="0"/>&nbsp;<br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 20px;">3.3 open applicationContext.xml, add a bean references to UserAction</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 24px;"></span>
+</p>
+<table cellspacing="0" cellpadding="0" width="886">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="864">
+                <p>
+                    &lt;?xml&nbsp;version=<span style="color:#800000;">&quot;1.0&quot;</span>&nbsp;encoding=<span style="color:#800000;">&quot;UTF-8&quot;</span>?&gt;<br/>
+&lt;beans<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;xmlns=<span style="color:#800000;">&quot;http://www.springframework.org/schema/beans&quot;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;xmlns:xsi=<span style="color:#800000;">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;xmlns:p=<span style="color:#800000;">&quot;http://www.springframework.org/schema/p&quot;</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;xsi:schemaLocation=<span style="color:#800000;">&quot;http://www.springframework.org/schema/beans&nbsp;http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;bean&nbsp;id=<span style="color:#800000;">&quot;userAction&quot;</span>&nbsp;<span style="color:#0000ff;">class</span>=<span style="color:#800000;">&quot;action.UserAction&quot;</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/bean&gt;<br/>
+&lt;/beans&gt;
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 20px;">3.4 modify struts.xml</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 24px;"></span>
+</p>
+<table cellspacing="0" cellpadding="0" width="885">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="863">
+                <p>
+                    &lt;?xml&nbsp;version=<span style="color:#800000;">&quot;1.0&quot;</span>&nbsp;encoding=<span style="color:#800000;">&quot;utf-8&quot;</span>?&gt;<br/>
+&lt;!DOCTYPE&nbsp;struts&nbsp;PUBLIC&nbsp;<span style="color:#800000;">&quot;-//Apache&nbsp;Software&nbsp;Foundation//DTD&nbsp;Struts&nbsp;Configuration&nbsp;2.0//EN&quot;</span><br/>
+<span style="color:#800000;">&quot;http://struts.apache.org/dt&nbsp;ds/struts-2.0.dtd&quot;</span>&gt;<br/>
+&lt;struts&gt;<br/>
+&nbsp;&nbsp;&lt;<span style="color:#0000ff;">package</span>&nbsp;name=<span style="color:#800000;">&quot;struts2&quot;</span>&nbsp;<span style="color:#0000ff;">extends</span>=<span style="color:#800000;">&quot;struts-default&quot;</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;action&nbsp;name=<span style="color:#800000;">&quot;login&quot;</span>&nbsp;<span style="color:#0000ff;">class</span>=<span style="color:#800000;">&quot;<strong>userAction</strong>&quot;</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&nbsp;name=<span style="color:#800000;">&quot;success&quot;</span>&gt;/welcome.jsp&lt;/result&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;result&nbsp;name=<span style="color:#800000;">&quot;error&quot;</span>&gt;/error.jsp&lt;/result&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/action&gt;<br/>
+&nbsp;&nbsp;&lt;/<span style="color:#0000ff;">package</span>&gt;<br/>
+&lt;/struts&gt;
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 24px;"></span><span style="font-size: 20px;">3.5 under the source folder,create a file name struts.properties</span><br/>
+</p>
+<table cellspacing="0" cellpadding="0" width="884">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="862">
+                <p>
+                    struts.objectFactory=spring
+                </p>
+                <p>
+                    <span style="font-family: 微软雅黑, sans-serif; font-size: 24px;"></span>
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-size: 20px;">3.6 modify web.xml</span>
+</p>
+<table cellspacing="0" cellpadding="0" width="885">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="863">
+                <p>
+                    &lt;?xml&nbsp;version=<span style="color:#800000;">&quot;1.0&quot;</span>&nbsp;encoding=<span style="color:#800000;">&quot;UTF-8&quot;</span>?&gt;<br/>
+&lt;web-app&nbsp;version=<span style="color:#800000;">&quot;3.0&quot;</span>&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;xmlns=<span style="color:#800000;">&quot;http://java.sun.com/xml/ns/javaee&quot;</span>&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;xmlns:xsi=<span style="color:#800000;">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>&nbsp;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;xsi:schemaLocation=<span style="color:#800000;">&quot;http://java.sun.com/xml/ns/javaee&nbsp;<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;http:<span style="color:#008000;">//java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;&gt;<br/>
+</span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;display-name&gt;&lt;/display-name&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter-name&gt;struts2&lt;/filter-name&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter-<span style="color:#0000ff;">class</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/filter-<span style="color:#0000ff;">class</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/filter&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter-mapping&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;filter-name&gt;struts2&lt;/filter-name&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: rgb(0, 0, 0);">&nbsp;&lt;url-pattern&gt;</span><span style="color:#008000;"><span style="color: rgb(0, 0, 0);">/*&lt;/url-pattern&gt;</span><br/>
+&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(0, 0, 0);">&nbsp;&lt;/filter-mapping&gt;<br/>
+&nbsp;&nbsp;<strong>&nbsp;&nbsp;&lt;listener&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;listener-class&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;org.springframework.web.context.ContextLoaderListener<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/listener-class&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/listener&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;context-param&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;param-value&gt;/WEB-INF/classes/applicationContext.xml&lt;/param-value&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/context-param&gt;</strong><br/>
+&nbsp;&nbsp;&lt;welcome-file-list&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;<br/>
+&nbsp;&nbsp;&lt;/welcome-file-list&gt;<br/>
+&lt;/web-app&gt;</span>
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-size: 20px;">3.7 add&nbsp;struts2-spring-plugin-2.3.16.1.jar to WEB-INF/lib</span>
+</p>
+<p>
+    <span style="font-size: 24px;">4&nbsp;Add&nbsp;Hibernate&nbsp;capability</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 20px;">4.1&nbsp;choose Hibernate 3.3 Annotations &amp; Entity Manager,Hibernate 3.3 Core Libraries</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 20px;">then click Next</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 24px;"></span>
+</p>
+<table width="887">
+    <tbody>
+        <tr>
+            <td width="866" valign="top">
+                <img title="麦库截图20142024202022678.jpg" alt="麦库截图20142024202022678.jpg" src="http://files.note.sdo.com/Z1AG2FAC53FD6DFC90480347A9495F2122592ED0" border="0"/>&nbsp;<br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif; font-size: 24px;"></span><span style="font-size: 20px;">4.2 creeate hibernate.cfg.xml</span><br/>
+</p>
+<table width="887">
+    <tbody>
+        <tr>
+            <td width="866" valign="top">
+                <img title="麦库截图20142024202339043.jpg" alt="麦库截图20142024202339043.jpg" src="http://files.note.sdo.com/Z1AG3808F7663312FAE8C4458A9953A2DBE388C7" border="0"/>&nbsp;<br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-size: 20px;">4.</span><span style="font-family: 微软雅黑, sans-serif; font-size: 20px;">3&nbsp;</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif;"></span>
+</p>
+<table width="887">
+    <tbody>
+        <tr>
+            <td width="866" valign="top">
+                <img title="麦库截图20142024202541569.jpg" alt="麦库截图20142024202541569.jpg" src="http://files.note.sdo.com/Z1AG799C63E8CB1246DFDE408093B7433C16D086" border="0"/>&nbsp;<br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif;"></span><span style="font-size: 20px;">4.4 select database connection</span><br/>
+</p>
+<p>
+    <img title="麦库截图20142024202631845.jpg" alt="麦库截图20142024202631845.jpg" src="http://files.note.sdo.com/Z1AG19649BB0E2C49C1A9648927FCECE7EE7A9E6" border="0"/>&nbsp;<br/>
+</p>
+<p>
+    <span style="font-size: 20px;">4.5 create HibernateSessionFactory</span>
+</p>
+<p>
+    <img title="麦库截图20142024202736073.jpg" alt="麦库截图20142024202736073.jpg" src="http://files.note.sdo.com/Z1AGE08F708CD4C62448E2448B13C1426D4D4B1F" border="0"/>&nbsp;<br/>
+</p>
+<p>
+    <br/>
+</p>
+<p>
+    <span style="font-size: 20px;">4.6 Select Window-&gt;Show View-&gt;DB Browser</span>
+</p>
+<p>
+    open specific database connection<br/>
+</p>
+<table width="887">
+    <tbody>
+        <tr>
+            <td width="866" valign="top">
+                <img title="麦库截图20142124212130700.jpg" alt="麦库截图20142124212130700.jpg" src="http://files.note.sdo.com/Z1AGE855AA3D5865881AB14A9D739BB9AEE0ED17" border="0"/>&nbsp;<br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    select all the tables you want to use in your applications and right click on the selected tables
+</p>
+<p>
+    select &#39;Hibernate Reverse Engineering&#39;<br/>
+</p>
+<table width="887">
+    <tbody>
+        <tr>
+            <td width="866" valign="top">
+                <img title="麦库截图20142124212453722.jpg" alt="麦库截图20142124212453722.jpg" src="http://files.note.sdo.com/Z1AG2014EB526649832DBB41B83415A401DEEFDF" border="0"/>&nbsp;<br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    Next
+</p>
+<table width="887">
+    <tbody>
+        <tr>
+            <td width="866" valign="top">
+                <p>
+                    <img title="麦库截图20142124212606707.jpg" alt="麦库截图20142124212606707.jpg" src="http://files.note.sdo.com/Z1AGFBF20DFC8EFD9DDCBA46877CCDE37ADF1604" border="0"/>&nbsp;
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    Nex<span style="font-family: 微软雅黑, sans-serif;">t</span>
+</p>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif;"></span>
+</p>
+<table width="887">
+    <tbody>
+        <tr>
+            <td width="866" valign="top">
+                <img title="麦库截图20142124212711540.jpg" alt="麦库截图20142124212711540.jpg" src="http://files.note.sdo.com/Z1AG3F6E91970EE3A6702D42A37ADB16458648C0" border="0"/>&nbsp;<br/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <span style="font-family: 微软雅黑, sans-serif;"></span>Finish
+</p>
+<p>
+    <span style="font-size: 24px;">5 Resource Download</span>
+</p>
+<p>
+    <a href="http://pan.baidu.com/s/1mg4xQje" target="_self" title="" data_ue_src="http://pan.baidu.com/s/1mg4xQje">SSH template download</a>
+</p>
+<p></p>
