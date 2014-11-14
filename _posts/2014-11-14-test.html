@@ -1,0 +1,91 @@
+---
+layout: template
+title: test
+---
+<p>
+    step1
+</p>
+<p>
+    open struts.xml, add following contents
+</p>
+<table cellspacing="0" cellpadding="0" width="835">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="813">
+                <p>
+                    <span style="color:#008000;">&lt;!--&nbsp;specify&nbsp;the&nbsp;base&nbsp;name&nbsp;of&nbsp;global&nbsp;international&nbsp;resources&nbsp;--&gt;</span><br/>
+<span style="color:#0000ff;">&lt;constant&nbsp;name</span>=<span style="color:#800000;">&quot;struts.custom.i18n.resources&quot;</span><span style="color:#0000ff;">&nbsp;value</span>=<span style="color:#800000;">&quot;message&quot;</span><span style="color:#0000ff;">&nbsp;/&gt;</span><br/>
+<span style="color:#008000;">&lt;!--&nbsp;specify&nbsp;charset&nbsp;of&nbsp;international&nbsp;encoding--&gt;</span><br/>
+<span style="color:#0000ff;">&lt;constant&nbsp;name</span>=<span style="color:#800000;">&quot;struts.i18n.encoding&quot;</span><span style="color:#0000ff;">&nbsp;value</span>=<span style="color:#800000;">&quot;UTF-8&quot;</span><span style="color:#0000ff;">&nbsp;/&gt;</span><br/>
+
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    step2
+</p>
+<p>
+    add message_zh_CN.properties and message_en_US.properties under source folder,the rule of resource file name is &quot;basename+language+country.properties&quot;
+</p>
+<p>
+    message_en_US.properties
+</p>
+<table cellspacing="0" cellpadding="0" width="833">
+    <tbody>
+        <tr>
+            <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="811">
+                <p>
+                    appname=ofos<br/>
+home=home<br/>
+login=login<br/>
+logout=logout<br/>
+register=register<br/>
+cart=cart<br/>
+personal_center=personal&nbsp;center
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    message_zh_CN.properties
+</p>
+<p>
+    <table cellspacing="0" cellpadding="0" width="834">
+        <tbody>
+            <tr>
+                <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="812">
+                    <p>
+                        appname=\u8BA2\u9910\u7CFB\u7EDF<br/>
+home=\u4E3B\u9875<br/>
+login=\u767B\u5F55<br/>
+logout=\u6CE8\u9500<br/>
+register=\u6CE8\u518C<br/>
+cart=\u8D2D\u7269\u8F66<br/>
+personal_center=\u4E2A\u4EBA\u4E2D\u5FC3
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>step3<br/>
+</p>
+<p>
+    use struts2 tag in jsp file,for example
+</p>
+<p>
+    <table cellspacing="0" cellpadding="0" width="834">
+        <tbody>
+            <tr>
+                <td style="background-color: rgb(239, 239, 239); vertical-align: text-top;" width="812">
+                    <p>
+                        <span style="color:#0000ff;">&lt;title&gt;&lt;s:text&nbsp;name</span>=<span style="color:#800000;">&quot;appname&quot;</span><span style="color:#0000ff;">&gt;&lt;/s:text&gt;&lt;/title&gt;</span>
+                    </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>you can change the default language of IE to see whether your international resources take effect
+</p>
+<p></p>
+<p></p>
