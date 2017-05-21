@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="regex," />
 
 
 
@@ -90,12 +90,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="DFA 和 NFA的区别 1、忽略优先量词是否得到支持  如果得到支持，说明是传统型NFA，否则是POSIX NFA或DFA。  2、DFA 不支持捕获括号和反向引用。  据此可以区分DFA和POSIX NFA。所以，awk和egrep都不支持反向引用。 GNU版本的egrep确实支持反向引用，这是因为它包含了两种不同的引擎。  3、预编译阶段和匹配速度的差异  NFA的编译过程通常要快一些 需要">
+<meta name="keywords" content="regex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式匹配原理">
+<meta property="og:url" content="http://yoursite.com/2017/05/21/DFA_VS_NFA/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DFA 和 NFA的区别 1、忽略优先量词是否得到支持  如果得到支持，说明是传统型NFA，否则是POSIX NFA或DFA。  2、DFA 不支持捕获括号和反向引用。  据此可以区分DFA和POSIX NFA。所以，awk和egrep都不支持反向引用。 GNU版本的egrep确实支持反向引用，这是因为它包含了两种不同的引擎。  3、预编译阶段和匹配速度的差异  NFA的编译过程通常要快一些 需要">
+<meta property="og:updated_time" content="2017-05-21T12:26:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="正则表达式匹配原理">
+<meta name="twitter:description" content="DFA 和 NFA的区别 1、忽略优先量词是否得到支持  如果得到支持，说明是传统型NFA，否则是POSIX NFA或DFA。  2、DFA 不支持捕获括号和反向引用。  据此可以区分DFA和POSIX NFA。所以，awk和egrep都不支持反向引用。 GNU版本的egrep确实支持反向引用，这是因为它包含了两种不同的引擎。  3、预编译阶段和匹配速度的差异  NFA的编译过程通常要快一些 需要">
 
 
 
@@ -123,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/21/DFA_VS_NFA/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title>正则表达式匹配原理 | Hexo</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -164,9 +169,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -259,9 +262,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -291,10 +294,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2017/05/21/DFA_VS_NFA/" itemprop="url">
-                  正则表达式匹配原理
-                </a>
+                正则表达式匹配原理
               
             
           </h1>
@@ -366,9 +366,7 @@
       
 
       
-        
-          
-            <h2 id="DFA-和-NFA的区别"><a href="#DFA-和-NFA的区别" class="headerlink" title="DFA 和 NFA的区别"></a>DFA 和 NFA的区别</h2><ul>
+        <h2 id="DFA-和-NFA的区别"><a href="#DFA-和-NFA的区别" class="headerlink" title="DFA 和 NFA的区别"></a>DFA 和 NFA的区别</h2><ul>
 <li>1、忽略优先量词是否得到支持</li>
 </ul>
 <p>如果得到支持，说明是传统型NFA，否则是POSIX NFA或DFA。</p>
@@ -440,331 +438,99 @@
 <p>回溯时选择的分支 与对二叉树的深度优先遍历类似 往左节点表示匹配优先 往右节点表示忽略优先 匹配失败则退回到堆栈中的上一个节点继续尝试。</p>
 <h3 id="POSIX-NFA"><a href="#POSIX-NFA" class="headerlink" title="POSIX NFA"></a>POSIX NFA</h3><p>如果传统型NFA的效率问题值得关注，那么POSIX NFA的效率就更值得关注，因为它需要尝试正则表达式的所有变体，进行更多的回溯。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/01/how-to-setup-your-github-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kaitaow">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/01/how-to-setup-your-github-blog/" itemprop="url">
-                  how to setup your github blog
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-01T21:41:34+08:00">
-                2017-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具与经验/" itemprop="url" rel="index">
-                    <span itemprop="name">工具与经验</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/regex/" rel="tag"># regex</a>
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
         
-          
-            <p>1、在github上创建一个新的repo，命名为[your_github_username].github.io</p>
-<p>2、git clone 远程仓库到本地，本地仓库路径记为${local_path}，下文会用到。</p>
-<p>3、搭建hexo 本地站点，参考<a href="http://div.io/topic/1691" target="_blank" rel="external">这篇文章</a></p>
-<p>4、生成站点内容。终端中切换到hexo本地站点根目录下，执行以下命令：</p>
-<p><code>hexo g</code></p>
-<p>5、拷贝public目录下内容到local_path目录下</p>
-<p><code>cp -R public/* ${local_path}</code></p>
-<p>6、提交本地仓库变更到远程仓库</p>
-<p><code>git add .</code></p>
-<p><code>git commit -m &#39;commit message&#39;</code></p>
-<p><code>git push origin master</code></p>
-<p>其中第4-6步的操作可以写一个脚本自动执行。</p>
-<p>在hexo本地站点根目录下新建一个脚本文件deploy.sh，输入以下内容：</p>
-<p><code>hexo g</code><br><code>cp -R public/* ${local_path}</code><br><code>cd ${local_path}</code><br><code>git add .</code><br><code>git commit -m &#39;update&#39;</code><br><code>git push origin master</code></p>
-<p>之后每次更新blog只需要在hexo本地站点根目录下执行这个脚本文件即可。</p>
-<p><code>sh deploy.sh</code></p>
-<p>7、更换hexo主题</p>
-<p>参考<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">有哪些好看的 Hexo 主题？</a></p>
-<p>8、语言问题</p>
-<p>在hexo本地站点的根目录下有一个_config.yml文件，可以对语言做配置。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
       
 
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/01/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="kaitaow">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/05/01/how-to-setup-your-github-blog/" rel="next" title="how to setup your github blog">
+                <i class="fa fa-chevron-left"></i> how to setup your github blog
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2017/05/01/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-01T14:35:37+08:00">
-                2017-05-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -772,6 +538,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
 
         </div>
         
@@ -791,8 +563,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -854,6 +635,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#DFA-和-NFA的区别"><span class="nav-number">1.</span> <span class="nav-text">DFA 和 NFA的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匹配原理"><span class="nav-number">2.</span> <span class="nav-text">匹配原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DFA-确定型有穷自动机"><span class="nav-number">2.1.</span> <span class="nav-text">DFA(确定型有穷自动机)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#传统型NFA-非确定型有穷自动机"><span class="nav-number">2.2.</span> <span class="nav-text">传统型NFA (非确定型有穷自动机)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#匹配优先与忽略优先"><span class="nav-number">2.2.1.</span> <span class="nav-text">- 匹配优先与忽略优先</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#固化分组和占有优先量词"><span class="nav-number">2.2.2.</span> <span class="nav-text">- 固化分组和占有优先量词</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#环视-向前查找或向后查找"><span class="nav-number">2.2.3.</span> <span class="nav-text">- 环视 向前查找或向后查找</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回溯"><span class="nav-number">2.2.4.</span> <span class="nav-text">回溯</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#POSIX-NFA"><span class="nav-number">2.3.</span> <span class="nav-text">POSIX NFA</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -967,6 +764,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
 
   
 
@@ -998,6 +799,10 @@
   
     
 
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2132406"></script>
+      <!-- UY END -->
     
   
 
